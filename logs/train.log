@@ -1,0 +1,9 @@
+[11:34:51] FreqMAE Training — categories: ['bottle']
+[11:34:51] Config: {'data_root': 'data/mvtec', 'img_size': 224, 'num_workers': 0, 'mask_ratio': 0.75, 'mask_mode': 'freq', 'patch_size': 16, 'in_chans': 3, 'enc_embed_dim': 384, 'enc_depth': 12, 'enc_num_heads': 6, 'dec_embed_dim': 192, 'dec_depth': 4, 'dec_num_heads': 3, 'norm_pix_loss': True, 'mlp_ratio': 4.0, 'epochs': 2, 'batch_size': 4, 'lr': 0.00015, 'weight_decay': 0.05, 'log_every': 20, 'save_every': 50, 'checkpoint_dir': 'checkpoints', 'log_dir': 'logs', 'eval_metric': 'auroc', 'n_passes': 5}
+[11:34:51] ============================================================
+[11:34:51] Category : bottle
+[11:34:51] Device   : cpu
+[11:34:51] Epochs   : 2
+[11:34:51] Batch    : 4
+[11:34:51] Mask mode: freq  ratio=0.75
+[11:34:51] ============================================================

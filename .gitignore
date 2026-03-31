@@ -1,1 +1,10 @@
-__pycache__/\n*.pyc\n.env\ndata/mvtec/\n*.egg-info/\ndist/\n.DS_Store\nwandb/
+__pycache__/
+*.pyc
+.env
+data/
+mvtec/
+*.egg-info/
+dist/
+.DS_Store
+wandb/
+*venv/

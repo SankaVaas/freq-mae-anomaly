@@ -1,0 +1,12 @@
+# FreqMAE — core dependencies
+# Install: pip install -r requirements.txt
+# Note: torch and torchvision are pre-installed on Colab — skip if on Colab
+
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+Pillow>=9.0.0
+pyyaml>=6.0
+scikit-learn>=1.2.0
+scipy>=1.10.0
+matplotlib>=3.7.0
