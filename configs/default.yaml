@@ -1,0 +1,48 @@
+# configs/default.yaml
+# ---------------------------------------------------------------------------
+# FreqMAE — Frequency-Aware Masked Autoencoder for Texture Anomaly Detection
+# ---------------------------------------------------------------------------
+# All hyperparameters in one place.
+# CLI args in train.py / evaluate.py override these values.
+
+# ── Data ────────────────────────────────────────────────────────────────────
+data_root   : "data/mvtec"        # path to extracted MVTec-AD dataset
+img_size    : 224                 # resize all images to (img_size x img_size)
+num_workers : 0                   # 0 = safe on Windows; set 4 on Colab/Linux
+
+# ── Masking (core novelty) ───────────────────────────────────────────────────
+mask_ratio  : 0.75                # fraction of patches to mask
+mask_mode   : "freq"              # "freq" | "random" | "low"
+patch_size  : 16                  # patch side length in pixels
+                                  # 224/16 = 14x14 = 196 patches per image
+
+# ── Encoder (ViT-Small) ──────────────────────────────────────────────────────
+in_chans      : 3
+enc_embed_dim : 384               # ViT-Small hidden dim
+enc_depth     : 12                # transformer blocks
+enc_num_heads : 6                 # attention heads
+
+# ── Decoder (shallow) ────────────────────────────────────────────────────────
+dec_embed_dim : 192
+dec_depth     : 4
+dec_num_heads : 3
+
+# ── Loss ─────────────────────────────────────────────────────────────────────
+norm_pix_loss : true              # normalize pixel targets per patch (MAE paper)
+mlp_ratio     : 4.0
+
+# ── Training ─────────────────────────────────────────────────────────────────
+epochs        : 200               # full training; use 50 for quick experiments
+batch_size    : 32                # safe for T4 16GB at img_size=224
+lr            : 1.5e-4            # base learning rate (AdamW)
+weight_decay  : 0.05              # AdamW weight decay
+log_every     : 20                # log loss every N steps
+save_every    : 50                # save periodic checkpoint every N epochs
+
+# ── Paths ────────────────────────────────────────────────────────────────────
+checkpoint_dir : "checkpoints"    # checkpoints/<category>/best.pth
+log_dir        : "logs"           # logs/train.log, logs/eval.log
+
+# ── Evaluation ───────────────────────────────────────────────────────────────
+eval_metric    : "auroc"          # primary metric: auroc | pro
+n_passes       : 5                # inference forward passes per image (avg)
